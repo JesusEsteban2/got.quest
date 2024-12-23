@@ -1,5 +1,4 @@
 export function renderCharacter(element) {
-  console.log(element);
   const categoryItem = {
     king: `<li>Años de reinado: ${element.reignYears}</li>`,
     fighter: `<li>Arma: ${element.weapon}</li><li>Destreza: ${element.skillLevel}</li>`,
@@ -26,12 +25,12 @@ export function renderCharacter(element) {
   if (element.isAlive) {
     isAliveItem = ['<i class="fas fa-thumbs-up"></i>', ''];
   }
-
+  const img = element.name.toLowerCase();
   const template = `
           <li class="character col">
             <div class="card character__card">
               <img
-                src="img/${element.name}.jpg"
+                src="img/${img}.jpg"
                 alt="Nombre y familia del personaje"
                 width="300px"
                 class="character__picture card-img-top ${isAliveItem[1]}"
@@ -52,8 +51,8 @@ export function renderCharacter(element) {
                   ${classCharacter}
                   </ul>
                   <div class="character__actions">
-                    <button class="character__action btn">habla</button>
-                    <button class="character__action btn">muere</button>
+                    <button class="character__action btn" habla>habla</button>
+                    <button class="character__action btn muere">muere</button>
                   </div>
                 </div>
               </div>
@@ -62,26 +61,50 @@ export function renderCharacter(element) {
           </li>`;
 
   const insertPoint = document.querySelector('.characters-list');
+  insertPoint.insertAdjacentHTML('afterbegin', template);
 
-  const item = insertPoint.insertAdjacentHTML('afterbegin', template);
-  return item;
+  console.dir(insertPoint);
+
+  const buttons = document.querySelectorAll('button');
+
+  buttons[0].addEventListener('click', () => handlerHabla(element));
+  buttons[1].addEventListener('click', () => handlerMuere(element));
+  // element[link]=insertPoint;
+  return insertPoint;
 }
 
 export function renderMessage(message, picture) {
-  //TODO: Cambiar los métodos.
-
-  console.log(picture, message);
-
   const template = `
-      <p class="comunications-tex">${message}</p>
-      <img
-        class="comunications-picture"
-        src="./img/${picture}.jpg"
-        alt="Nombre y familia del que habla"
-      />`;
+     <div class="comunications-message"> 
+        <p class="comunications-tex">${message}</p>
+        <img
+         class="comunications-picture"
+         src="./img/${picture}.jpg"
+          alt="Nombre y familia del que habla"
+        />
+      </div>`;
 
   const insertPoint = document.querySelector('.comunications');
   const item = insertPoint.insertAdjacentHTML('afterbegin', template);
   insertPoint.classList.replace('comunications', 'comunications.on');
-  return item;
+
+  setTimeout(() => {
+    insertPoint.classList.replace('comunications.on', 'comunications');
+    const childPoint = document.querySelector('.comunications-message');
+    childPoint.remove();
+  }, 2000);
+
+  return insertPoint.children;
+}
+
+function handlerHabla(element) {
+  console.log(element);
+  const men = renderMessage(element.message, element.name.toLowerCase());
+}
+
+function handlerMuere(element) {
+  //TODO: Falta renderizado tras la muerte.
+  element.isAlive = false;
+
+  console.dir(element);
 }
