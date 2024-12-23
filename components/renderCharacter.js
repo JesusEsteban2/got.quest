@@ -70,7 +70,7 @@ export function renderCharacter(element) {
 export function renderMessage(message, picture) {
   //TODO: Cambiar los métodos.
 
-  console.log(classCharacter);
+  console.log(picture, message);
 
   const template = `
       <p class="comunications-tex">${message}</p>

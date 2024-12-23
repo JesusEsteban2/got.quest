@@ -16,4 +16,4 @@ const data = loadData();
 
 data.forEach((element) => renderCharacter(element));
 
-const men = renderMessage(data[0].message, data[0].name.toLowerCase);
+const men = renderMessage(data[0].message, data[0].name.toLowerCase());
