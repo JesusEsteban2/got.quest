@@ -1,7 +1,7 @@
 [
   {
-    "isAlive": true,
-    "message": "You're all to die!",
+    "isAlive": false,
+    "message": "Vais a morir todos!",
     "name": "Joffrey",
     "family": "Baratheon",
     "age": 18,
@@ -10,8 +10,8 @@
   },
   {
     "isAlive": true,
-    "message": "I hit first and ask later",
-    "name": "Jamie",
+    "message": "Primero pego y luego pregunto",
+    "name": "Jaime",
     "family": "Lannister",
     "age": 33,
     "weapon": "sword",
@@ -20,7 +20,7 @@
   },
   {
     "isAlive": true,
-    "message": "I hit first and ask later",
+    "message": "Primero pego y luego pregunto",
     "name": "Daenerys",
     "family": "Targaryen",
     "age": 18,
@@ -30,10 +30,11 @@
   },
   {
     "isAlive": true,
-    "message": "I dunno know why, but I believe I am gonna die soon",
+    "message": "No sé por qué, pero creo que voy a morir pronto",
     "name": "Tyrion",
     "family": "Lannister",
     "age": 40,
+    "category": "adviser",
     "adviseTo": {
       "isAlive": true,
       "message": "I hit first and ask later",
@@ -42,12 +43,11 @@
       "age": 18,
       "weapon": "dragons",
       "skillLevel": 8
-    },
-    "category": "adviser"
+    }
   },
   {
     "isAlive": true,
-    "message": "I am a real loser",
+    "message": "Soy un perdedor",
     "name": "Bronn",
     "family": "Nieve",
     "age": 35,
@@ -55,7 +55,7 @@
     "servesTo": {
       "isAlive": true,
       "message": "I hit first and ask later",
-      "name": "Jamie",
+      "name": "Jaime",
       "family": "Lannister",
       "age": 33,
       "weapon": "sword",
