@@ -1,4 +1,5 @@
 import { renderCharacter } from './components/renderCharacter.js';
+import { renderMessage } from './components/renderCharacter.js';
 import { loadData } from './components/loadDlata.js';
 
 const dataObject = {
@@ -14,3 +15,5 @@ const dataObject = {
 const data = loadData();
 
 data.forEach((element) => renderCharacter(element));
+
+const men = renderMessage(data[0].message, data[0].name.toLowerCase);

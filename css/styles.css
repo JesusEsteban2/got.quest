@@ -128,12 +128,22 @@ body {
   left: 0;
   background-color: rgba(255, 255, 255, 1);
 }
-.comunications__picture {
+.comunications-picture {
   width: 70px;
   position: absolute;
   right: 10px;
   bottom: 10px;
 }
+
+.comunications-tex {
+  position: absolute;
+  top: 700px;
+  right: 100px;
+  z-index: 2;
+  width: fit-content;
+  height: auto;
+}
+
 .emoji {
   font-style: normal;
   position: absolute;
