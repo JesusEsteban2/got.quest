@@ -74,7 +74,7 @@ function renderMessage(message, pictureName) {
         <p class="comunications-tex">${message}</p>
         <img
          class="comunications-picture"
-         src="./img/${pictureName}.jpg"
+         src="./img/${pictureName}.webp"
           alt="Nombre y familia del que habla"
         />
       </div>`;
