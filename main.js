@@ -1,17 +1,15 @@
 import { renderCharacter } from './components/renderCharacter.js';
-import { renderMessage } from './components/renderCharacter.js';
-import { loadData } from './components/loadDlata.js';
-
-const dataObject = {
-  isAlive: true,
-  message: "You're all to die!",
-  name: 'Joffrey',
-  family: 'Baratheon',
-  age: 18,
-  reignYears: 1,
-  category: 'king',
-};
+import { loadData } from './components/loadData.js';
 
 const data = loadData();
+const newCard = `<li class="character col"></li>`;
 
-data.forEach((element) => renderCharacter(element));
+data.forEach((element) => {
+  const insertPoint = document.querySelector('.characters-list');
+
+  insertPoint.insertAdjacentHTML('afterbegin', newCard);
+  element.linkElement = document.querySelector(
+    '.characters-list>li:first-Child'
+  );
+  const link = renderCharacter(element, element.linkElement);
+});

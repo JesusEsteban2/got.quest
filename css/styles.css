@@ -40,16 +40,22 @@ h5,
 h6 {
   text-wrap: balance;
 }
+
 /* end reset */
+
+h1 {
+  text-align: center;
+}
+
 body {
   background-color: #b9540c;
-  overflow: hidden;
 }
 .characters-list {
   display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
   max-width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   align-items: center;
 }
 .character {
@@ -63,10 +69,13 @@ body {
 .character__picture {
   object-fit: cover;
   object-position: top;
-  height: 200px;
+  max-height: 250px;
 }
 .character__card {
   position: relative;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+  margin-bottom: 0.25rem;
   border: none;
   background-color: #331c0e;
   color: #fff;
@@ -97,6 +106,7 @@ body {
   pointer-events: all;
   top: 0;
 }
+
 .character__actions {
   display: flex;
   flex-direction: column;
@@ -104,6 +114,7 @@ body {
   align-items: center;
   height: 90px;
 }
+
 .character__action {
   background-color: #67331e;
   color: #fff;
@@ -130,13 +141,13 @@ body {
 }
 .comunications-picture {
   width: 70px;
-  position: absolute;
+  position: fixed;
   right: 10px;
   bottom: 10px;
 }
 
 .comunications-tex {
-  position: absolute;
+  position: fixed;
   top: 700px;
   right: 100px;
   z-index: 2;

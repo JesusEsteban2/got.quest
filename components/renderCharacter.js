@@ -1,4 +1,4 @@
-export function renderCharacter(element) {
+export function renderCharacter(element, insertPoint) {
   const categoryItem = {
     king: `<li>Años de reinado: ${element.reignYears}</li>`,
     fighter: `<li>Arma: ${element.weapon}</li><li>Destreza: ${element.skillLevel}</li>`,
@@ -27,59 +27,54 @@ export function renderCharacter(element) {
   }
   const img = element.name.toLowerCase();
   const template = `
-          <li class="character col">
-            <div class="card character__card">
-              <img
-                src="img/${img}.jpg"
-                alt="Nombre y familia del personaje"
-                width="300px"
-                class="character__picture card-img-top ${isAliveItem[1]}"
-              />
-              <div class="card-body">
-                <h2 class="character__name card-title h4">${element.name} ${element.family}</h2>
-                <div class="character__info">
-                  <ul class="list-unstyled">
-                    <li>Edad: ${element.age} años</li>
-                    <li>
-                      Estado:
-                      ${isAliveItem[0]}
-                    </li>
-                  </ul>
-                </div>
-                <div class="character__overlay">
-                  <ul class="list-unstyled">
-                  ${classCharacter}
-                  </ul>
-                  <div class="character__actions">
-                    <button class="character__action btn" habla>habla</button>
-                    <button class="character__action btn muere">muere</button>
-                  </div>
-                </div>
-              </div>
-              <i class="emoji">${emoji}</i>
+        <div class="card character__card">
+           <img
+            src="img/${img}.jpg"
+            alt="Nombre y familia del personaje"
+            width="300px"
+            class="character__picture card-img-top ${isAliveItem[1]}"
+          />
+          <div class="card-body">
+            <h2 class="character__name card-title h4">${element.name} ${element.family}</h2>
+            <div class="character__info">
+              <ul class="list-unstyled">
+                <li>Edad: ${element.age} años</li>
+                <li>
+                  Estado:
+                  ${isAliveItem[0]}
+                </li>
+              </ul>
             </div>
-          </li>`;
+            <div class="character__overlay">
+              <ul class="list-unstyled">
+              ${classCharacter}
+              </ul>
+              <div class="character__actions">
+                <button class="character__action btn" habla>habla</button>
+                <button class="character__action btn muere">muere</button>
+              </div>
+            </div>
+          </div>
+          <i class="emoji">${emoji}</i>
+        </div>`;
 
-  const insertPoint = document.querySelector('.characters-list');
   insertPoint.insertAdjacentHTML('afterbegin', template);
 
-  console.dir(insertPoint);
+  const buttons = insertPoint.querySelectorAll('button');
 
-  const buttons = document.querySelectorAll('button');
+  buttons[0].addEventListener('click', () => handlerTalk(element));
+  buttons[1].addEventListener('click', () => handlerDead(element));
 
-  buttons[0].addEventListener('click', () => handlerHabla(element));
-  buttons[1].addEventListener('click', () => handlerMuere(element));
-  // element[link]=insertPoint;
   return insertPoint;
 }
 
-export function renderMessage(message, picture) {
+function renderMessage(message, pictureName) {
   const template = `
      <div class="comunications-message"> 
         <p class="comunications-tex">${message}</p>
         <img
          class="comunications-picture"
-         src="./img/${picture}.jpg"
+         src="./img/${pictureName}.jpg"
           alt="Nombre y familia del que habla"
         />
       </div>`;
@@ -94,17 +89,18 @@ export function renderMessage(message, picture) {
     childPoint.remove();
   }, 2000);
 
-  return insertPoint.children;
+  return insertPoint;
 }
 
-function handlerHabla(element) {
-  console.log(element);
-  const men = renderMessage(element.message, element.name.toLowerCase());
+function handlerTalk(element) {
+  const showMessage = renderMessage(
+    element.message,
+    element.name.toLowerCase()
+  );
 }
 
-function handlerMuere(element) {
-  //TODO: Falta renderizado tras la muerte.
-  element.isAlive = false;
-
-  console.dir(element);
+function handlerDead(element) {
+  element.isAlive = !element.isAlive;
+  element.linkElement.innerHTML = '';
+  renderCharacter(element, element.linkElement);
 }
