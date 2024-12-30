@@ -29,7 +29,7 @@ export function renderCharacter(element, insertPoint) {
   const template = `
         <div class="card character__card">
            <img
-            src="img/${img}.jpg"
+            src="img/${img}.webp"
             alt="Nombre y familia del personaje"
             width="300px"
             class="character__picture card-img-top ${isAliveItem[1]}"
