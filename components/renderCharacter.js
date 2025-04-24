@@ -2,8 +2,6 @@ export function renderCharacter(element, insertPoint) {
   const categoryItem = {
     king: `<li>Años de reinado: ${element.reignYears}</li>`,
     fighter: `<li>Arma: ${element.weapon}</li><li>Destreza: ${element.skillLevel}</li>`,
-    // adviser: `<li>Asesora a: ${element.adviseTo.name}</li>`,
-    // squire: `<li>Sirve a: ${element.servesTo.name}</li><li>Servilismo: ${element.serveLevel}</li>`,
   };
 
   let emoji = '🗡';
@@ -25,6 +23,7 @@ export function renderCharacter(element, insertPoint) {
   if (element.isAlive) {
     isAliveItem = ['<i class="fas fa-thumbs-up"></i>', ''];
   }
+
   const img = element.name.toLowerCase();
   const template = `
         <div class="card character__card">
@@ -35,7 +34,7 @@ export function renderCharacter(element, insertPoint) {
             class="character__picture card-img-top ${isAliveItem[1]}"
           />
           <div class="card-body">
-            <h2 class="character__name card-title h4">${element.name} ${element.family}</h2>
+            <h2 class="character__name card-title">${element.name} ${element.family}</h2>
             <div class="character__info">
               <ul class="list-unstyled">
                 <li>Edad: ${element.age} años</li>
@@ -70,22 +69,22 @@ export function renderCharacter(element, insertPoint) {
 
 function renderMessage(message, pictureName) {
   const template = `
-     <div class="comunications-message"> 
-        <p class="comunications-tex">${message}</p>
+     <div class="communications-message"> 
+        <p class="communications-tex">${message}</p>
         <img
-         class="comunications-picture"
+         class="communications-picture"
          src="./img/${pictureName}.webp"
           alt="Nombre y familia del que habla"
         />
       </div>`;
 
-  const insertPoint = document.querySelector('.comunications');
+  const insertPoint = document.querySelector('.communications');
   const item = insertPoint.insertAdjacentHTML('afterbegin', template);
-  insertPoint.classList.replace('comunications', 'comunications.on');
+  insertPoint.classList.replace('communications', 'communications.on');
 
   setTimeout(() => {
-    insertPoint.classList.replace('comunications.on', 'comunications');
-    const childPoint = document.querySelector('.comunications-message');
+    insertPoint.classList.replace('communications.on', 'communications');
+    const childPoint = document.querySelector('.communications-message');
     childPoint.remove();
   }, 2000);
 

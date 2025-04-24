@@ -50,6 +50,7 @@ h1 {
 body {
   background-color: #b9540c;
 }
+
 .characters-list {
   display: flex;
   flex-wrap: wrap;
@@ -58,14 +59,18 @@ body {
   min-height: 100%;
   align-items: center;
 }
+
 .character {
   width: 25%;
   flex-basis: auto;
   flex-grow: 0;
 }
+
 .character__name {
-  height: 60px;
+  height: 50px;
+  font-size: 1.4rem;
 }
+
 .character__picture {
   object-fit: cover;
   object-position: top;
@@ -113,6 +118,12 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 90px;
+}
+
+.list-unstyled {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .character__action {
